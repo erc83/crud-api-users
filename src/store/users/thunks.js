@@ -1,7 +1,10 @@
 import {
     fetchUsersFailure,
     fetchUsersStart,
-    fetchUsersSuccess
+    fetchUsersSuccess,
+    deleteUserStart,
+    deleteUserSuccess,
+    deleteUserFailure
 } from './actions'
 
 
@@ -19,3 +22,24 @@ export const fetchUsersStartThunk = () => {
         }
     }
 }
+
+export const deleteUserStartThunk = (id) => {
+    return async (dispatch, getState) => {
+        // const {users} = getState();
+        // if(users.data.length > 10) { return; }
+        dispatch(deleteUserStart());
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {method: 'DELETE'})
+            const data = await response.json();
+            
+            dispatch(deleteUserSuccess(id))
+            
+            
+        } catch (error) {
+            dispatch(deleteUserFailure(error.message))
+        }
+    }
+}
+
+
+
