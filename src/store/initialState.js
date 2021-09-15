@@ -1,9 +1,11 @@
 export const initialStateUser = {
-    isFetching : false,
+    isLoading: false,
     data: [],
     errorMessage: null,
     message: null,
 }
+
+
 
 
 
