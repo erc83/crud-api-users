@@ -9,6 +9,7 @@ const UserList = () => {
     console.log(users)
 
     const dispatch = useDispatch()
+    
     useEffect(() => {
         dispatch(fetchUsersStartThunk())
     }, [])
